@@ -3,42 +3,520 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio de [Tu Nombre]</title>
+    <title>CV | Emmanuel Vergara Garay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #333; }
-        .header { text-align: center; margin-bottom: 40px; }
-        .project { border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-top: 15px; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .tags { margin-top: 10px; }
-        .tag { background: #e75480; color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.8em; margin-right: 5px; }
-        .btn-repo { display: inline-block; margin-top: 10px; text-decoration: none; color: #333; border: 1px solid #333; padding: 5px 10px; border-radius: 4px; }
-        .btn-repo:hover { background: #333; color: white; }
+        :root {
+            --primary: #004e92; /* Azul corporativo */
+            --secondary: #e75480; /* Acento */
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #fff;
+            line-height: 1.6;
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            background: linear-gradient(135deg, #000428, #004e92);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        header h2 {
+            font-weight: 300;
+            font-size: 1.5rem;
+            margin-top: 10px;
+            color: #ddd;
+        }
+
+        .contact-bar {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-btn:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* --- LAYOUT GENERAL --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- SOBRE MÍ --- */
+        .about-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* --- EXPERIENCIA LABORAL --- */
+        .job-card {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 40px;
+        }
+
+        .job-logo {
+            flex: 0 0 100px;
+            height: 100px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .job-logo img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .job-content {
+            flex: 1;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .job-company {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .job-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+            background: #f1f1f1;
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        .job-details ul {
+            padding-left: 20px;
+        }
+
+        .job-details li {
+            margin-bottom: 8px;
+            color: #444;
+        }
+
+        /* --- EDUCACIÓN --- */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .edu-card {
+            background: var(--light);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .edu-card ul {
+            margin-top: 10px;
+            padding-left: 20px;
+            color: #555;
+        }
+
+        /* --- HABILIDADES (CON IMÁGENES/ICONOS) --- */
+        .skills-category {
+            margin-bottom: 30px;
+        }
+
+        .skills-category h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); /* Aumenté un poco el ancho mínimo */
+            gap: 20px;
+            text-align: center;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .skill-icon-img {
+            width: 40px; 
+            height: 40px; 
+            margin-bottom: 10px;
+        }
+        
+        .skill-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 5px; /* Espacio para el tiempo */
+        }
+
+        /* NUEVO ESTILO: Tiempo de experiencia */
+        .skill-time {
+            font-size: 0.75rem;
+            color: #666;
+            background-color: #f1f3f5;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        /* Soft Skills Tags */
+        .soft-skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .soft-tag {
+            background: #e3f2fd;
+            color: var(--primary);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* --- PROYECTOS (VIDEO) --- */
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+            max-width: 600px; 
+            margin: 0 auto;
+        }
+
+        .project-info {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            background: #000;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .job-card { flex-direction: column; gap: 15px; }
+            .job-logo { width: 80px; height: 80px; }
+            .job-header { flex-direction: column; }
+            .job-date { margin-top: 5px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>Hola, soy Emmanuel Vergara 👋</h1>
-        <p> Ingeniero en Informática | Programador de Software | Arquitecto de Software Y base de datos </p>
+    <header>
+        <h1>Emmanuel Vergara Garay</h1>
+        <h2>Ingeniero en Informática | Programador de Software | Arquitecto de Software y Base de Datos</h2>
+        <div class="contact-bar">
+            <a href="mailto:emmanuel.evg2001@gmail.com" class="contact-btn"><i class="fas fa-envelope"></i> Contactar</a>
+            <a href="https://www.linkedin.com/in/emmanuel-vergara-garay/" target="_blank" class="contact-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <section>
+            <h2 class="section-title">Perfil Profesional</h2>
+            <p class="about-text">
+                Ingeniero en Informática de 24 años con sólida formación en ingeniería de software y gestión de datos. 
+                Recientemente finalicé mi práctica profesional en <strong>Banco Ripley</strong>, donde obtuve experiencia en Arquitectura de Datos y Cloud Computing (AWS).
+                <br><br>
+                Busco activamente aportar mi formación en ingeniería y mis aptitudes de organización, creatividad, innovación y adaptabilidad para desarrollar soluciones tecnológicas que resuelvan desafíos, impulsen el crecimiento y contribuyan al éxito de la empresa.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="section-title">Experiencia Laboral</h2>
+
+            <div class="job-card">
+                <div class="job-logo">
+                    <img src="imagenes/bancoripley.jpg" alt="Logo Banco Ripley">
+                </div>
+                <div class="job-content">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Ingeniero de Datos (Práctica Profesional)</h3>
+                            <span class="job-company">Banco Ripley - Gerencia de Arquitectura de Datos</span>
+                        </div>
+                        <span class="job-date">Sept 2025 - Nov 2025</span>
+                    </div>
+                    <div class="job-details">
+                        <ul>
+                            <li><strong>Automatización y Monitoreo (AWS Glue & Python):</strong> Desarrollé scripts en Python Shell para monitorear la latencia de replicadores CDC en tiempo real consultando metadata de <strong>Amazon S3</strong>, implementando alertas automáticas vía <strong>Microsoft Teams</strong> ante caídas del servicio.</li>
+                            <li><strong>Migración de Arquitectura (SQL & Redshift):</strong> Ejecuté la migración y estandarización de más de 20 Stored Procedures hacia esquemas productivos, asegurando la integridad de datos críticos y la trazabilidad de la información bancaria.</li>
+                            <li><strong>Seguridad de Datos (Data Mocking):</strong> Diseñé algoritmos en Python para generar datasets sintéticos (1.000+ registros) con contexto chileno (RUT, direcciones), permitiendo entornos de prueba seguros sin exponer Información de Identificación Personal (PII).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="job-card">
+                <div class="job-logo">
+                    <img src="imagenes/cinepolis.jpg" alt="Logo Cinepolis">
+                </div>
+                <div class="job-content">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Staff de Atención al Cliente</h3>
+                            <span class="job-company">Cinépolis</span>
+                        </div>
+                        <span class="job-date">Oct 2021 - Ene 2024</span>
+                    </div>
+                    <div class="job-details">
+                        <ul>
+                            <li>Atención directa al cliente en un entorno de alta demanda.</li>
+                            <li>Resolución de conflictos y trabajo bajo presión.</li>
+                            <li>Coordinación de equipo para el cumplimiento de metas operativas diarias.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Formación Académica</h2>
+            <div class="edu-grid">
+                <div class="edu-card">
+                    <h3>Ingeniería en Informática</h3>
+                    <p><strong>IP Santo Tomás</strong> | 2022 - 2025</p>
+                    <p>Octavo Semestre Aprobado</p>
+                    <p>En proceso de defensa de Actividad de titulacion</p>
+                    <hr style="border: 0; border-top: 1px solid #ddd; margin: 15px 0;">
+                    <p><strong>Certificaciones Académicas obtenidas:</strong></p>
+                    <ul>
+                        <li>Programación Básica</li>
+                        <li>Programación Avanzada</li>
+                        <li>Redes y Enrutamiento</li>
+                        <li>Arquitectura de Software</li>
+                        <li>Diseño de Software y Base de Datos</li>
+                        <li>Administración de Sistemas</li>
+                        <li>Gestión de Proyectos Informáticos</li>
+                        <li>Análisis de Datos</li>
+                        <li>Seguridad Informática</li>
+                    </ul>
+                </div>
+
+                <div class="edu-card">
+                    <h3>Enseñanza Media</h3>
+                    <p><strong>Liceo Salesiano Camilo Ortúzar Montt</strong></p>
+                    <p>Científico Humanista, El cual estudié con mención en Química</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Habilidades y Tecnologías</h2>
+
+            <div class="skills-category">
+                <h3>Cloud Computing & Datos (AWS)</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fab fa-aws skill-icon" style="color: #ff9900;"></i>
+                        <div class="skill-name">AWS Glue</div>
+                        <span class="skill-time">1 Año</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-database skill-icon" style="color: #2c3e50;"></i>
+                        <div class="skill-name">Redshift</div>
+                         <span class="skill-time">1 Año</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-cloud skill-icon" style="color: #007bff;"></i>
+                        <div class="skill-name">Amazon S3</div>
+                         <span class="skill-time">1 Año</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-server skill-icon" style="color: #6c757d;"></i>
+                        <div class="skill-name">SQL Medio</div>
+                         <span class="skill-time">+3 Años</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <h3>Desarrollo de Software</h3>
+                <div class="skills-grid">
+                    
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="Logo C#" class="skill-icon-img">
+                        <div class="skill-name">C#</div>
+                         <span class="skill-time">2 Años</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-python skill-icon" style="color: #3776ab;"></i>
+                        <div class="skill-name">Python</div>
+                         <span class="skill-time">+3 Años</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-php skill-icon" style="color: #777bb4;"></i>
+                        <div class="skill-name">PHP 8</div>
+                         <span class="skill-time">2 Años</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-js skill-icon" style="color: #f7df1e;"></i>
+                        <div class="skill-name">JavaScript</div>
+                         <span class="skill-time">+2 Años</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-android skill-icon" style="color: #3ddc84;"></i>
+                        <div class="skill-name">Android Studio</div>
+                         <span class="skill-time">2 Años</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <h3>Habilidades Sociales</h3>
+                <div class="soft-skills-container">
+                    <span class="soft-tag">Trabajo en Equipo</span>
+                    <span class="soft-tag">Adaptabilidad Tecnológica</span>
+                    <span class="soft-tag">Comunicación Efectiva</span>
+                    <span class="soft-tag">Ética Profesional</span>
+                    <span class="soft-tag">Resolución de Problemas</span>
+                    <span class="soft-tag">Organización</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Portafolio de Proyectos</h2>
+            
+            <div class="project-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/TU_ID_VIDEO" title="4E Bazar Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="project-info">
+                    <h3 style="margin-top: 0; color: var(--primary);">🛒 4E Bazar - E-commerce Full Stack</h3>
+                    <p>
+                        Proyecto personal completo desarrollado con <strong>PHP Nativo y MySQL</strong>.
+                        Demostración de capacidad para construir sistemas complejos desde cero, incluyendo gestión de usuarios, 
+                        carrito de compras dinámico, lógica de negocio y seguridad.
+                    </p>
+                </div>
+            </div>
+        </section>
+
     </div>
 
-    <div class="project">
-        <h2>🛒 4E Bazar - E-commerce Completo</h2>
-        <p>Sistema de ventas desarrollado desde cero con PHP nativo. Incluye gestión de usuarios, carrito de compras dinámico y panel de administración.</p>
-        
-        <div class="video-container">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/TU_ID_VIDEO" title="Video Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
+    <footer style="text-align: center; padding: 20px; background: #eee; color: #666; font-size: 0.9rem;">
+        &copy; 2025 Emmanuel Vergara Garay - Ingeniero en Informática
+    </footer>
 
-        <div class="tags">
-            <span class="tag">PHP</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">JavaScript</span>
-        </div>
-        <br>
-        <a href="LINK_A_TU_REPO_DE_CODIGO" class="btn-repo" target="_blank">📂 Ver Código en GitHub</a>
-    </div>
-
-    </body>
+</body>
 </html>
